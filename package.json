@@ -1,0 +1,61 @@
+{
+  "name": "trooveo",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "firebase": "^5.8.4",
+    "moment": "^2.24.0",
+    "npm": "^6.9.0",
+    "postcss-load-config": "^2.0.0",
+    "request": "^2.88.0",
+    "vue": "^2.6.6",
+    "vue-analytics": "^5.16.2",
+    "vue-linkify": "^1.0.1",
+    "vue-meta": "^1.5.8",
+    "vue-router": "^3.0.2",
+    "vue-slider-component": "^2.8.13",
+    "vuetify": "^1.5.3",
+    "vuex": "^3.1.0",
+    "ytdl-core": "^0.29.1",
+    "ytsr": "^0.1.8"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.4.0",
+    "@vue/cli-plugin-eslint": "^3.4.0",
+    "@vue/cli-service": "^3.4.0",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.8.0",
+    "eslint-plugin-vue": "^5.0.0",
+    "vue-template-compiler": "^2.5.21"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "rules": {},
+    "parserOptions": {
+      "parser": "babel-eslint"
+    }
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ]
+}

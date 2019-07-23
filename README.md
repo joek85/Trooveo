@@ -1,5 +1,9 @@
 # trooveo
+![](screenshots/Screenshot%201.png)
 
+
+
+![](screenshots/Screenshot%202.png)
 ## Project setup
 ```
 npm install

@@ -4,6 +4,11 @@
 
 
 ![](screenshots/Screenshot%202.png)
+# Trooveo is a project which can let you search, listen to youtube videos.
+This is the front-end of the project, based on Vuejs, Vuetify.
+It is connected to a back-end server and fetches data accordingly, there is lots of features that are implemented but not enabled, like history, channels, sets etc...
+Download is implemented but disabled, you can hover on the top left image in the player page to see the download button.
+
 ## Project setup
 ```
 npm install

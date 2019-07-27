@@ -29,6 +29,9 @@ export default {
   getHistoryData (state) {
     return state.historyData
   },
+  getHistoryDates (state) {
+      return state.historyDates
+  },
   getSets (state) {
     return state.sets
   },

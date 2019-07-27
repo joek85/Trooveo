@@ -10,7 +10,6 @@
                   <!--</v-card-media>-->
               <v-img
                 :src="imgurl"
-                aspect-ratio="1"
                 height="180px"
               ></v-img>
               <v-progress-linear
@@ -75,17 +74,10 @@ export default {
   components: {
     VCardTitle
   },
-  props: ['url'],
+  props: ['url', 'title', 'imgurl', 'timeM', 'playcounts', 'duration', 'subtitle', 'urlchannel'],
   data () {
     return {
-      duration: '00:00',
-      playcounts: '0',
-      title: '',
-      subtitle: '',
-      imgurl: '',
-      timeM: '0',
       played: 0,
-      urlchannel: '0',
       isplayed: (this.played > 0),
       menuItems: [
         {title: 'Go to Youtube', click: this.gotoyoutube},
@@ -117,24 +109,24 @@ export default {
     },
     async fetchplayerdata (id) {
       // console.log(id)
-      let t = this
-      playerservice.fetchPlayerdata(id)
-        .then(function (response) {
-          t.duration = 0
-          t.playcounts = 0
-          t.title = response.data[0].title
-          t.subtitle = response.data[0].subtitle
-          t.imgurl = response.data[0].thumbnail
-          t.duration = playerservice.convertTime(response.data[0].duration)
-          t.playcounts = playerservice.formatNumbers(response.data[0].play_counts)
-          t.timeM = playerservice.formatTime(response.data[0].published_at)
-          t.urlchannel = response.data[0].channel_id
-          t.played = response.data[0].played
-          t.isplayed = (t.played > 0)
-        })
-        .catch(function (error) {
-          console.log(error)
-        })
+      //      let t = this
+      //      playerservice.fetchPlayerdata(id)
+      //        .then(function (response) {
+      //          t.duration = 0
+      //          t.playcounts = 0
+      //          t.title = response.data[0].title
+      //          t.subtitle = response.data[0].subtitle
+      //          t.imgurl = response.data[0].thumbnail
+      //          t.duration = playerservice.convertTime(response.data[0].duration)
+      //          t.playcounts = playerservice.formatNumbers(response.data[0].play_counts)
+      //          t.timeM = playerservice.formatTime(response.data[0].published_at)
+      //          t.urlchannel = response.data[0].channel_id
+      //          t.played = response.data[0].played
+      //          t.isplayed = (t.played > 0)
+      //        })
+      //        .catch(function (error) {
+      //          console.log(error)
+      //        })
     }
   },
   computed: {

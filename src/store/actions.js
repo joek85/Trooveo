@@ -22,15 +22,24 @@ export default {
       console.log('logout')
     }).catch(err => console.log(err))
   },
-  commitHistoryData ({commit, getters}) {
+    commitHistoryDates ({commit, getters}) {
+        historyservice.fetchHistorydates(getters.getUser).then(function (responsedata) {
+            commit('setHistoryDates', responsedata)
+        })
+    },
+  commitHistoryData ({commit, getters},d) {
     // console.log(getters.getUser)
-    historyservice.fetchHistory(getters.getUser).then(function (responsedata) {
-      // console.log(responsedata)
+    historyservice.fetchHistorydata(getters.getUser,d).then(function (responsedata) {
+       // console.log(responsedata)
       // console.log(responsedata.data.length)
-      let arr = []
-      for (let i = 0; i < responsedata.data.length; i++) {
-        arr.push({date: responsedata.data[i].date, medias: responsedata.data[i].medias.split(',').map(function (n) { return {id: n} })}
-        )
+      //let arr = []
+      //for (let i = 0; i < responsedata.data.length; i++) {
+        // arr.push({date: responsedata.data[i].date,
+        //     medias:{ids:responsedata.data[i].ids.split('\n').map(function (n) { return {id: n} }),
+        //         titles: responsedata.data[i].title.split('\n').map(function (n) { return {title: n} })}
+        //
+        // }
+        // )
         // playerservice.fetchPlayerdata(responsedata.data[i])
         //   .then(function (response) {
         //     arr.push({
@@ -47,14 +56,15 @@ export default {
         //   .catch(function (error) {
         //     console.log(error)
         //   })
-      }
-      // console.log(arr)
-      commit('setHistoryData', arr)
+        //   console.log(arr)
+      //}
+
+      commit('setHistoryData', responsedata.data)
     })
   },
   commitPlayerData ({commit, getters}, id) {
     commit('setId', id)
-    playerservice.fetchPlayerdata(id)
+    playerservice.fetchPlayerdata(id,getters.getUser,playerservice.formatTime2())
       .then(function (response) {
         // console.log(response)
         let playerarray = []

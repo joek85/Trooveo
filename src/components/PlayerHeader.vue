@@ -1,5 +1,4 @@
 <template>
-  <v-container>
     <v-card color="primary" class="elevation-0 pa-3" dark>
       <!--<v-container fluid grid-list-md>-->
         <v-layout row wrap>
@@ -30,7 +29,7 @@
                             <v-btn slot="activator" color="primary" fab>
                               <v-icon>fullscreen</v-icon>
                             </v-btn>
-                            <v-card style="background-color: #212121" dark>
+                            <v-card style="background-color: black" dark>
                               <v-toolbar card dark color="transparent">
                                 <v-btn icon dark @click="dialog = false">
                                   <v-icon>close</v-icon>
@@ -91,7 +90,6 @@
         </v-layout>
       <!--</v-container>-->
     </v-card>
-  </v-container>
 </template>
 <script>
 import playerservice from '@/services/player'

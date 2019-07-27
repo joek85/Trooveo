@@ -1,5 +1,5 @@
 <template>
-      <v-card color="primary" class="elevation-0" dark style="width: 100%">
+      <v-card color="primary" class="elevation-0" dark style="width: 100%" >
         <v-layout row wrap style="height: 100%">
           <v-card hover color="secondary" style="width: 5%;height: 100%" class="elevation-4 ma-1">
             <!--<v-container grid-list-xs>-->
@@ -84,6 +84,34 @@ export default {
     components: {
     vueSlider
   },
+    created() {
+        window.addEventListener('keydown', (e) => {
+//            if (e.key === ' ') {
+////                e.preventDefault();
+////                this.togglePlaying()
+//            }
+            if (e.key === 'ArrowRight') {
+                e.preventDefault();
+                if (!isNaN(this.audios.audioB[this.audios.activeAudio].duration)) {
+                    this.audios.audioB[this.audios.activeAudio].currentTime = this.audios.audioB[this.audios.activeAudio].currentTime + 5
+                }
+            }
+            if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                if (!isNaN(this.audios.audioB[this.audios.activeAudio].duration)) {
+                    this.audios.audioB[this.audios.activeAudio].currentTime = this.audios.audioB[this.audios.activeAudio].currentTime - 5
+                }
+            }
+//            if (e.key === 'ArrowUp') {
+//                e.preventDefault();
+//                this.audios.audioB[this.audios.activeAudio].volume += 0.1;
+//            }
+//            if (e.key === 'ArrowDown') {
+//                e.preventDefault();
+//                this.audios.audioB[this.audios.activeAudio].volume -= 0.1;
+//            }
+        });
+    },
   data () {
     return {
       direction: 'top',
@@ -187,6 +215,9 @@ export default {
     }
   },
   methods: {
+      keyhandler(event) {
+          alert(`you didn't type '+', did you?`);
+      },
     initAudioEngine () {
       // console.log('init audio')
       this.setupAudios()

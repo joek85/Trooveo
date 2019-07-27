@@ -1,5 +1,4 @@
 <template>
-  <v-container>
     <v-card class="elevation-0">
       <v-card-title >
         <v-flex xs12>
@@ -10,7 +9,6 @@
         </v-flex>
       </v-card-title>
     </v-card>
-  </v-container>
 </template>
 <script>
 

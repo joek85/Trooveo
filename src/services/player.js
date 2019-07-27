@@ -10,8 +10,13 @@ export default {
           console.log(info)
       })
   },
-  fetchPlayerdata (id) {
-    return Api.hi().get('/player?id=' + id)
+  fetchPlayerdata (id, user, d) {
+      if (user !== null && user !== undefined) {
+          return Api.hi().get('/player?id=' + id + '&user=' + user + '&d=' + d)
+      } else {
+          return Api.hi().get('/player?id=' + id + '&d=' + d)
+      }
+    // return Api.hi().get('/player?id=' + id)
   },
   fetchRelateddata (id, nexttoken) {
     if (nexttoken !== undefined) {

@@ -58,6 +58,13 @@ new Vue({
   },
   components: { App },
   template: '<App/>',
-  render: h => h(App)
+  render: h => h(App),
+  directives: {
+      focus: {
+          inserted(el) {
+              el.focus()
+          }
+      }
+  }
 })
 

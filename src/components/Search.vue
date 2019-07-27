@@ -28,7 +28,7 @@
         </v-flex>
       </v-layout>
       <div class="text-xs-center">
-        <!--<v-btn @click="loadmore" round flat color="primary" dark>{{loadtext}}</v-btn>-->
+        <v-btn v-if="results.length != '0'" @click="loadmore" round flat color="primary" dark>{{loadtext}}</v-btn>
         <v-progress-circular v-if="results.length == '0'" indeterminate :size="50" color="primary"></v-progress-circular>
       </div>
     </v-container>
@@ -89,7 +89,7 @@ export default {
             // console.log(response)
             let posts = []
             for (let i = 0; i < response.data.length; i++) {
-              // console.log(response.data.items[i].id.videoId)
+//               console.log(response.data[i])
               posts.push({
                 url: response.data[i].id.videoId,
                 title: response.data[i].title,
@@ -97,7 +97,7 @@ export default {
                 dur: response.data[i].duration,
                 playCounts: playerservice.formatNumbers(response.data[i].play_counts),
                 timeM: response.data[i].published_at,
-                imgurl: response.data[i].thumbnail[0]
+                imgurl: response.data[i].thumbnail
               })
             }
             t.results = posts

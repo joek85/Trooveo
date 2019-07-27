@@ -1,5 +1,5 @@
 <template>
-  <v-container grid-list-sm>
+  <v-layout xl2>
     <v-card class="elevation-0">
             <div class="text-xs-right">
                 <!--<v-flex xs12 >-->
@@ -11,54 +11,35 @@
             </div>
 
         <v-layout row wrap>
-          <v-flex xs12>
-              <!--<v-list subheader>-->
-                <!--<v-list-tile>-->
-                  <!--<v-list-tile-action>-->
-                    <!--<v-checkbox v-model="check"></v-checkbox>-->
-                  <!--</v-list-tile-action>-->
-                  <!--<v-list-tile-content>-->
-                    <!--<v-list-tile-title>Add to queue</v-list-tile-title>-->
-                  <!--</v-list-tile-content>-->
-                <!--</v-list-tile>-->
-              <!--</v-list>-->
-              <!--<v-spacer></v-spacer>-->
-              <!--<v-flex class="text-xs-right" shrink>-->
-                <!--<v-switch class="text-xs-right" :label="`Switch 1: ${switch1.toString()}`" v-model="switch1"></v-switch>-->
-              <!--</v-flex>-->
-
-            <!--<v-divider class="my-1"></v-divider>-->
-          </v-flex>
-          <v-flex xs12 sm6 md4 lg3 xl2
+          <v-flex xs12
                   v-for="related in getRelatedDatas"
-                  :key="related.length"
-          >
-            <mediacard1
+                  :key="related.length">
+            <mediacard2
               :imgurl="related.imgurl"
               :url="related.id"
               :title="related.title"
               :subtitle="related.subtitle"
               :dur="related.duration"
               :playCounts="related.playcounts"
-            ></mediacard1>
+            ></mediacard2>
           </v-flex>
         </v-layout>
-        <div class="text-xs-center">
+        <v-flex class="text-xs-center" xs12>
           <v-progress-circular v-if="getRelatedDatas.length == '0'" indeterminate :size="50" color="primary"></v-progress-circular>
           <!--<v-btn v-if="getRelatedDatas.length != '0'" @click="loadmore" round flat color="primary" dark>{{loadtext}}</v-btn>-->
-        </div>
+        </v-flex>
     </v-card>
-  </v-container>
+  </v-layout>
 </template>
 
 <script>
-import mediacard1 from '@/components/MediaCard-1.vue'
+import mediacard2 from '@/components/MediaCard-2.vue'
 import VCardTitle from 'vuetify/src/components/VCard/VCardTitle'
 export default {
     /* eslint-disable */
   components: {
     VCardTitle,
-    mediacard1
+    mediacard2
   },
   data () {
     return {

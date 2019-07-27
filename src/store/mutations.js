@@ -37,6 +37,9 @@ export default {
   setHistoryData (state, data) {
     state.historyData = data
   },
+  setHistoryDates (state, dates) {
+      state.historyDates = dates
+  },
   setSetsData (state, data) {
     state.sets = data
   },

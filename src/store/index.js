@@ -24,6 +24,7 @@ export const store = new Vuex.Store({
       visibility: 'hidden'
     },
     user: null,
+      historyDates: [],
     historyData: [],
     mostpopularData: [
       {datas: []}, {nextToken: '', totalResults: '', loadText: ''}

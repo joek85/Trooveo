@@ -1,59 +1,59 @@
 <template>
   <v-content>
-    <v-layout row wrap>
-      <v-flex xs12>
-        <!--<form submit.prevent="onSubmit" action="https://www.youtube.com/get_video_info?video_id=yInADtnhY84" method="post" ref="myid">-->
-        <!--</form>-->
-        <!--<iframe src="https://www.youtube.com/get_video_info?video_id=yInADtnhY84" onload="receiveMessage" height="200" width="300"></iframe>-->
-        <playerheader></playerheader>
-      </v-flex>
-        <v-layout row wrap>
-          <v-flex xs12>
-            <playerrelatedcard></playerrelatedcard>
-          </v-flex>
-          <v-flex xs12>
+    <v-container >
+      <v-layout row wrap>
+        <v-flex xs12>
+          <playerheader></playerheader>
+        </v-flex>
+        <v-layout row wrap >
+          <v-flex xs12 sm12 md6 lg6 xl8>
             <playerinfocard></playerinfocard>
           </v-flex>
-        </v-layout>
-      <v-dialog v-model="setsDialog" maxWidth="400">
-        <v-card>
-          <v-card-title class="headline">Add to...</v-card-title>
-          <v-divider></v-divider>
-          <v-list two-line subheader>
-            <v-list-tile avatar v-for="item in getSets" :key="item.length">
-              <v-list-tile-action>
-                <v-checkbox v-model="item.check"></v-checkbox>
-              </v-list-tile-action>
-              <v-list-tile-content>
-                <v-list-tile-title>{{item.title}}</v-list-tile-title>
-                <v-list-tile-sub-title>{{ getTimeFormat(item.subtitle) }}</v-list-tile-sub-title>
-              </v-list-tile-content>
-            </v-list-tile>
-          </v-list>
-          <v-card-actions>
-            <v-spacer></v-spacer>
-            <v-btn color="primary" flat @click.native="setsDialog = false">cancel</v-btn>
-            <v-btn color="primary" flat @click.native="newDialog = true">new</v-btn>
-            <v-btn color="primary" :disabled="disabledAdd" flat @click.native="setsDialog = false">add</v-btn>
-          </v-card-actions>
-        </v-card>
-      </v-dialog>
-      <v-dialog v-model="newDialog" max-width="500px">
-        <v-card>
-          <v-card-title class="headline">Create new set</v-card-title>
-          <v-flex xs12>
-            <v-container>
-              <v-text-field v-model="Text" label="Name" required></v-text-field>
-            </v-container>
+          <v-flex xs12 sm12 md6 lg6 xl4>
+            <playerrelatedcard></playerrelatedcard>
           </v-flex>
-          <v-card-actions>
-            <v-spacer></v-spacer>
-            <v-btn color="primary" flat @click.stop="newDialog=false">cancel</v-btn>
-            <v-btn color="primary" flat @click.stop="newDialog=false" @click="createSet">create</v-btn>
-          </v-card-actions>
-        </v-card>
-      </v-dialog>
-    </v-layout>
+        </v-layout>
+        <v-dialog v-model="setsDialog" maxWidth="400">
+          <v-card>
+            <v-card-title class="headline">Add to...</v-card-title>
+            <v-divider></v-divider>
+            <v-list two-line subheader>
+              <v-list-tile avatar v-for="item in getSets" :key="item.length">
+                <v-list-tile-action>
+                  <v-checkbox v-model="item.check"></v-checkbox>
+                </v-list-tile-action>
+                <v-list-tile-content>
+                  <v-list-tile-title>{{item.title}}</v-list-tile-title>
+                  <v-list-tile-sub-title>{{ getTimeFormat(item.subtitle) }}</v-list-tile-sub-title>
+                </v-list-tile-content>
+              </v-list-tile>
+            </v-list>
+            <v-card-actions>
+              <v-spacer></v-spacer>
+              <v-btn color="primary" flat @click.native="setsDialog = false">cancel</v-btn>
+              <v-btn color="primary" flat @click.native="newDialog = true">new</v-btn>
+              <v-btn color="primary" :disabled="disabledAdd" flat @click.native="setsDialog = false">add</v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-dialog>
+        <v-dialog v-model="newDialog" max-width="500px">
+          <v-card>
+            <v-card-title class="headline">Create new set</v-card-title>
+            <v-flex xs12>
+              <v-container>
+                <v-text-field v-model="Text" label="Name" required></v-text-field>
+              </v-container>
+            </v-flex>
+            <v-card-actions>
+              <v-spacer></v-spacer>
+              <v-btn color="primary" flat @click.stop="newDialog=false">cancel</v-btn>
+              <v-btn color="primary" flat @click.stop="newDialog=false" @click="createSet">create</v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-dialog>
+      </v-layout>
+    </v-container>
+
   </v-content>
 </template>
 <script>

@@ -75,7 +75,8 @@
           </v-flex>
           <v-flex xs12 sm12 md7 lg9 xl9 fill-height class="pl-2">
             <h6 class="display-1">{{ getHdata[0].title }}</h6>
-            <span class="subheading">{{ getHdata[0].subtitle }}</span>
+            <router-link style="color: white" tag="a" class="subheading pr-1" :to="{name: 'Channel', params: {id: getHdata[0].channel_id}, meta: {title: getHdata[0].title} }"> {{ getHdata[0].subtitle }}</router-link>
+            <!--<span class="subheading">{{ getHdata[0].subtitle }}</span>-->
             <v-chip v-if="getHdata[0].duration" small disabled outline color="accent">{{getHdata[0].duration}}</v-chip>
             <v-chip v-if="getHdata[0].playcounts" small disabled outline color="accent">
               <v-icon>play_arrow</v-icon>

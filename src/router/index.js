@@ -8,8 +8,8 @@ import MostPopular from '@/components/MostPopular.vue'
 import SignIn from '@/components/SignIn.vue'
 import History from '@/components/History.vue'
 import Sets from '@/components/Sets.vue'
-
-Vue.use(Router)
+import Playlist from '@/components/Playlist.vue'
+Vue.use(Router);
 
 export default new Router({
     /* eslint-disable */
@@ -37,6 +37,12 @@ export default new Router({
       name: 'Channel',
       component: Channel,
       meta: {title: 'Channel'}
+    },
+    {
+        path: '/playlist/:id',
+        name: 'Playlist',
+        component: Playlist,
+        meta: {title: 'Playlist'}
     },
     {
       path: '/mostpopular',

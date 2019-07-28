@@ -14,8 +14,7 @@
         </v-flex>
         <v-flex d-flex xs12 sm4 md4 lg3 xl2
                 v-for="card in results"
-                :key="card.length"
-        >
+                :key="card.length">
           <searchcard1
             :imgurl="card.imgurl"
             :title="card.title"
@@ -24,6 +23,7 @@
             :dur="card.dur"
             :playCounts="card.playCounts"
             :timeM="card.timeM"
+            :channel_id="card.channel_id"
           ></searchcard1>
         </v-flex>
       </v-layout>
@@ -86,25 +86,28 @@ export default {
         let t = this
         search.search(str)
           .then(function (response) {
-            // console.log(response)
+//             console.log(response.data[1])
             let posts = []
-            for (let i = 0; i < response.data.length; i++) {
+            for (let i = 0; i < response.data[1].data.length; i++) {
 //               console.log(response.data[i])
               posts.push({
-                url: response.data[i].id.videoId,
-                title: response.data[i].title,
-                subtitle: response.data[i].subtitle,
-                dur: response.data[i].duration,
-                playCounts: playerservice.formatNumbers(response.data[i].play_counts),
-                timeM: response.data[i].published_at,
-                imgurl: response.data[i].thumbnail
+                url: response.data[1].data[i].id.videoId,
+                title: response.data[1].data[i].title,
+                subtitle: response.data[1].data[i].subtitle,
+                dur: response.data[1].data[i].duration,
+                playCounts: playerservice.formatNumbers(response.data[1].data[i].play_counts),
+                timeM: response.data[1].data[i].published_at,
+                imgurl: response.data[1].data[i].thumbnail,
+                  channel_id:response.data[1].data[i].channel_id
+//                channel_id:response.data[1].data[i].channel_id.split('channel/')[1] !== undefined ? response.data[1].data[i].channel_id.split('channel/')[1] : response.data[1].data[i].channel_id.split('user/')[1]
               })
             }
-            t.results = posts
-          //            t.nextToken = response.data.nextPageToken
+            t.results = posts;
+            t.nextToken = response.data[0].nextpageRef
           //            t.results = posts
           //            t.totalResults = response.data.pageInfo.totalResults
           //            t.loadtext = 'load more'
+//              console.log(t.nextToken);
           })
           .catch(function (error) {
             console.log(error)
@@ -115,17 +118,25 @@ export default {
     loadmore () {
       this.loadtext = 'loading...'
       let t = this
-      search.search(this.sQuery, this.nextToken)
+      search.search(this.sQuery, t.nextToken)
         .then(function (response) {
-          for (let i = 0; i < response.data.items.length; i++) {
+          for (let i = 0; i < response.data[1].data.length; i++) {
             t.results.push({
-              url: response.data.items[i].id.videoId})
+                url: response.data[1].data[i].id.videoId,
+                title: response.data[1].data[i].title,
+                subtitle: response.data[1].data[i].subtitle,
+                dur: response.data[1].data[i].duration,
+                playCounts: playerservice.formatNumbers(response.data[1].data[i].play_counts),
+                timeM: response.data[1].data[i].published_at,
+                imgurl: response.data[1].data[i].thumbnail,
+                channel_id:response.data[1].data[i].channel_id})
           }
-          t.nextToken = response.data.nextPageToken
+          t.nextToken = response.data[0].nextpageRef;
           t.loadtext = 'load more'
+//            console.log(t.nextToken);
         })
         .catch(function (error) {
-          console.log(error)
+          console.log(error);
           t.loadtext = 'load more'
         })
     }

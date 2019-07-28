@@ -79,7 +79,8 @@ export default {
             duration: playerservice.convertTime(response.data[i].duration),
             playcounts: playerservice.formatNumbers(response.data[i].play_counts),
             timeM: playerservice.formatTime(response.data[i].published_at),
-            Id: id})
+            Id: id,
+              channel_id:response.data[i].channel_id});
           infosArray.push({
             title: response.data[i].subtitle, descriptions: response.data[i].description
           })

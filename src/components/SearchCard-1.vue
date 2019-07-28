@@ -1,23 +1,32 @@
 <template>
   <v-layout row>
     <v-flex xs12>
-      <v-card class="elevation-0" :to="{name: 'Player', params: {id: url }}">
+      <!--<v-card class="elevation-0" :to="{name: 'Player', params: {id: url }}">-->
         <!--<v-card-media-->
           <!--:src="imgurl"-->
           <!--height="200px"-->
         <!--&gt;-->
         <!--</v-card-media>-->
+      <router-link :to="{name: 'Player', params: {id: url} }">
         <v-img
           :src="imgurl"
-          aspect-ratio="1"
+          class="primary"
           height="200px"
         ></v-img>
-        <v-card-title primary-title>
-          <div>
-            <h3 class="subheading">{{ title }}</h3>
-            <span class="grey--text">{{ subtitle }}</span>
-          </div>
-        </v-card-title>
+      </router-link>
+        <!--<v-card-title primary-title>-->
+          <!--<div>-->
+            <!--<h3 class="subheading">{{ title }}</h3>-->
+            <!--<span class="grey&#45;&#45;text">{{ subtitle }}</span>-->
+          <!--</div>-->
+        <!--</v-card-title>-->
+      <div>
+        <router-link tag="a" class="subheading" :to="{name: 'Player', params: {id: url}, meta: {title: title} }"> {{ title }}</router-link>
+      </div>
+
+      <div>
+        <router-link tag="a" class="subheading grey--text" :to="{name: 'Channel', params: {id: channel_id } }">{{ subtitle }}</router-link>
+      </div>
         <v-card-actions>
           <v-chip small disabled outline color="accent">{{dur}}</v-chip>
           <v-chip small disabled outline color="accent">
@@ -26,7 +35,7 @@
           </v-chip>
           <v-chip small disabled outline color="accent">{{timeM}}</v-chip>
         </v-card-actions>
-      </v-card>
+      <!--</v-card>-->
     </v-flex>
   </v-layout>
 </template>
@@ -35,7 +44,7 @@ import VCardTitle from 'vuetify/src/components/VCard/VCardTitle'
 // import playerservice from '@/services/player'
 export default {
   components: {VCardTitle},
-  props: ['url', 'imgurl', 'dur', 'title', 'subtitle', 'playCounts', 'timeM'],
+  props: ['url', 'imgurl', 'dur', 'title', 'subtitle', 'playCounts', 'timeM', 'channel_id'],
   data () {
     return {
     }

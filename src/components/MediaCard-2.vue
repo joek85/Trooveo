@@ -27,15 +27,16 @@
             </div>
 
             <div>
-              <router-link tag="a" class="subheading grey--text" :to="{name: 'Channel', params: {id: urlchannel } }">{{ subtitle }}</router-link>
+              <span class="subheading grey--text">{{ subtitle }}</span>
+              <!--<router-link tag="a" class="subheading grey&#45;&#45;text" :to="{name: 'Channel', params: {id: urlchannel } }">{{ subtitle }}</router-link>-->
             </div>
 
-            <v-chip v-if="getDuration" small disabled outline color="accent">{{dur}}</v-chip>
-            <v-chip v-if="getPlayCounts" small disabled outline color="accent">
+            <v-chip v-if="dur" small disabled outline color="accent">{{dur}}</v-chip>
+            <v-chip v-if="playCounts" small disabled outline color="accent">
               <v-icon>play_arrow</v-icon>
               <span>{{playCounts}}</span>
             </v-chip>
-            <v-chip v-if="getTimeM" small disabled outline color="accent">{{timeM}}</v-chip>
+            <v-chip v-if="timeM" small disabled outline color="accent">{{timeM}}</v-chip>
 
 
             </v-flex>
@@ -51,7 +52,7 @@ export default {
   components: {
 //    VCardTitle
   },
-  props: ['url', 'dur', 'playCounts', 'title', 'subtitle', 'imgurl'],
+  props: ['url', 'dur', 'playCounts', 'title', 'subtitle', 'imgurl', 'timeM'],
   data () {
     return {
       played: 0,

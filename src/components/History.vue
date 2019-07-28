@@ -14,6 +14,15 @@
                       dark
                       flat>
                 <v-toolbar-title>{{getHistorydata.length}} ITEMS</v-toolbar-title>
+                <v-text-field class="pa-1"
+                        v-model="search"
+                        clearable
+                        flat
+                        solo-inverted
+                        hide-details
+                        prepend-inner-icon="search"
+                        label="Search"
+                ></v-text-field>
                 <v-spacer></v-spacer>
                 <v-chip v-if="editedItem.name" small disabled outline color="white">{{getTime(editedItem.name) }}</v-chip>
               </v-toolbar>
@@ -35,6 +44,7 @@
                   <!--</v-layout>-->
               <v-container fluid grid-list-md>
                 <v-data-iterator
+                        :search="search"
                         :items="getHistorydata"
                         :rows-per-page-items="rowsPerPageItems"
                         :pagination.sync="pagination"
@@ -44,16 +54,6 @@
                 >
                   <template v-slot:item="props">
                     <v-flex xs6 >
-                      <!--<historycard-->
-                      <!--:url="props.item.media_id"-->
-                      <!--:imgurl="props.item.thumbnail.split('?')[0]"-->
-                      <!--:title="props.item.title"-->
-                      <!--:timeM="getTime(0)"-->
-                      <!--:playcounts="getPlayCounts(props.item.play_counts)"-->
-                      <!--:duration="getTimeFormat(props.item.duration_hms)"-->
-                      <!--:subtitle="props.item.channel_name"-->
-                      <!--:urlchannel="props.item.channel_id"-->
-                      <!--&gt;</historycard>-->
                       <mediacard2
                               :imgurl="props.item.thumbnail.split('?')[0]"
                               :url="props.item.media_id"
@@ -66,16 +66,10 @@
                   </template>
                 </v-data-iterator>
               </v-container>
-                <!--<template slot="no-data">-->
-                  <!--<v-btn color="primary" @click="clearHistory">Reset</v-btn>-->
-                <!--</template>-->
             </v-card>
           </v-flex>
           <v-flex xs4>
             <v-card class="elevation-0">
-              <!--<div class="text-xs-center">-->
-                <!--<v-btn outline round color="primary" dark>clear history</v-btn>-->
-              <!--</div>-->
               <v-toolbar
                       class="mb-1"
                       color="primary"
@@ -109,12 +103,12 @@
 <script>
 //import searchcard1 from '@/components/SearchCard-1.vue'
 import mediacard2 from '@/components/MediaCard-2.vue'
-import historycard from '@/components/HistoryCard.vue'
+//import historycard from '@/components/HistoryCard.vue'
 //import VCardTitle from 'vuetify/src/components/VCard/VCardTitle'
 import playerservice from '@/services/player'
 export default {
   components: {
-    historycard,mediacard2},
+    mediacard2},
   mounted () {
     window.document.title = 'History';
     this.$store.dispatch('commitHistoryDates')
@@ -131,6 +125,7 @@ export default {
   },
   data () {
     return {
+        search: '',
       results: [],
       ids: [],
       editedItem: {

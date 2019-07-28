@@ -1,16 +1,16 @@
 <template>
   <!--<v-container grid-list-xs>-->
-    <v-card class="elevation-0">
+    <v-card class="elevation-0" height="auto">
         <v-layout row wrap>
           <v-flex xs12>
-            <v-card class="pizza" color="accent" :to="{name: 'Player', params: {id: url} }">
+            <router-link  :to="{name: 'Player', params: {id: url} }">
                   <!--<v-card-media class="v-card-media"-->
                                 <!--height="180px"-->
                                 <!--:src="imgurl">-->
                   <!--</v-card-media>-->
               <v-img
                 :src="imgurl"
-                aspect-ratio="1"
+                class="primary"
                 height="180px"
               ></v-img>
               <v-progress-linear
@@ -35,7 +35,7 @@
                   <!--</v-flex>-->
                 <!--</v-layout>-->
               <!--</v-container>-->
-            </v-card>
+            </router-link>
             <v-card-title class="primary-title pa-1">
               <div>
                 <router-link tag="a" class="subheading" :to="{name: 'Player', params: {id: url}, meta: {title: title} }"> {{ title }}</router-link>
@@ -76,12 +76,11 @@ export default {
   components: {
     VCardTitle
   },
-  props: ['url', 'dur', 'playCounts', 'title', 'subtitle', 'imgurl'],
+  props: ['url', 'dur', 'playCounts', 'title', 'subtitle', 'imgurl', 'timeM'],
   data () {
     return {
       played: 0,
       isplayed: false,
-      timeM: '0',
       urlchannel: '1',
         failed_image: false,
       menuItems: [
@@ -143,10 +142,10 @@ export default {
       return this.dur !== '00:00'
     },
     getPlayCounts () {
-      return this.playCounts !== '0'
+      return this.playCounts
     },
     getTimeM () {
-      return this.timeM !== '0'
+      return this.timeM
     },
       cPicture: function() {
           return this.failed_image ? this.imgurl : this.imgurl.split('hqdefault')[0] + 'maxresdefault.jpg';

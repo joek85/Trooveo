@@ -57,7 +57,6 @@ export default {
     return {
       played: 0,
       isplayed: false,
-      timeM: '0',
       urlchannel: '1',
         failed_image: false,
       menuItems: [

@@ -108,7 +108,7 @@
         :vertical="mode === 'vertical'"
         v-model="snackbar"
       >
-        {{ text }}
+        {{ snackbarText }}
         <v-btn flat color="white" @click.native="snackbar = false">Close</v-btn>
       </v-snackbar>
     </main>
@@ -155,21 +155,27 @@ export default {
       y: 'bottom',
       x: 'left',
       mode: '',
-      timeout: 3000,
-      text: 'Message',
+      timeout: 8000,
+      snackbarText: 'Message',
       listS: []
     }
   },
+  created () {
+//      this.$bus.$on('openSnackBar', function () {
+//          this.snackbar = true
+//      })
+  },
   mounted () {
-    document.addEventListener('click', this.handleClickOutside)
+    document.addEventListener('click', this.handleClickOutside);
+    this.$root.$on('SnackBar', (param) => {
+        this.snackbarText = param;
+        this.snackbar = true
+    })
   },
   destroyed () {
     document.removeEventListener('click', this.handleClickOutside)
   },
   computed: {
-    audioplayerdatas () {
-      return this.$store.getters.getheaderdata
-    },
     footerhider () {
       return this.$store.getters.getfootervisibility
     },

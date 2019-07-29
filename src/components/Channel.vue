@@ -139,6 +139,7 @@ export default {
           t.channelDesc = response.data.info.description;
           t.videos = response.data.info.videos;
           t.playlists = response.data.info.playlists;
+          t.setWindowTitle(t.channelTitle)
         })
         .catch(function (error) {
           console.log(error)
@@ -158,6 +159,9 @@ export default {
     },
       getTime (t) {
           return playerservice.formatTime(t)
+      },
+      setWindowTitle (title) {
+          window.document.title = title;
       }
   },
     computed: {

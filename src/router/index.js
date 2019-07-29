@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Player from '@/components/Player.vue'
-import Home from '@/components/Home.vue'
 import Search from '@/components/Search.vue'
 import Channel from '@/components/Channel.vue'
 import MostPopular from '@/components/MostPopular.vue'
@@ -17,8 +16,7 @@ export default new Router({
     {
       path: '/',
       name: 'Home',
-      component: Home,
-      redirect: '/mostpopular'
+      component: MostPopular
     },
     {
       path: '/player/:id',

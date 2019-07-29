@@ -259,7 +259,7 @@ export default {
       //      webAudioPeakMeter.createMeter(myMeterElement, meterNode, {})
     },
     setupAudioEventListinners (index) {
-      this.audios.audioB[index].addEventListener('onerror', this.onAudioError)
+      this.audios.audioB[index].addEventListener('error', this.onAudioError)
       this.audios.audioB[index].addEventListener('play', this.onAudioPlay)
       this.audios.audioB[index].addEventListener('pause', this.onAudioPause)
       this.audios.audioB[index].addEventListener('abort', this.onAudioPause)
@@ -339,8 +339,9 @@ export default {
       //      console.log(this.audios.activeAudio)
       //      this.crossFadeOut()
     },
-      onAudioError () {
-        console.log("hi hbb")
+      onAudioError (err) {
+//        console.log(err);
+          this.$root.$emit('SnackBar', 'Error, cannot play the stream!')
       },
     onAudioPause () {
       // this.isPlaying = false

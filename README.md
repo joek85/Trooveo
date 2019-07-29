@@ -1,4 +1,4 @@
-# Trooveo is a project which can let you search, listen to youtube videos.
+# Trooveo is a project which can let you search, listen to youtube videos. No YouTube Api.
 # Player
 ![](screenshots/player.png)
 

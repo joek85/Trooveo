@@ -20,7 +20,7 @@
                         </v-layout>
                         <v-card-title class="display-1">{{Title}}</v-card-title>
                         <v-card-actions>
-                            <v-chip v-if="total" small disabled outline color="accent">{{'total:' + total}}</v-chip>
+                            <v-chip v-if="total" small disabled outline color="accent">{{'Total:' + total}}</v-chip>
                             <v-chip v-if="playCounts" small disabled outline color="accent">
                                 <v-icon>play_arrow</v-icon>
                                 <span>{{playCounts}}</span>
@@ -82,7 +82,11 @@ export default {
                     t.timeM = response.data.last_updated
                     t.playCounts = playerservice.formatNumbers(response.data.views)
                     t.items = response.data.items
+                    t.setWindowTitle(t.Title)
                 })
+        },
+        setWindowTitle (title) {
+            window.document.title = title;
         }
     },
     computed: {

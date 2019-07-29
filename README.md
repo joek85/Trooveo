@@ -30,6 +30,7 @@ It looks similar to Youtube web page but for audio.
 * list history of played videos (require sql database for the backend server)
 * keyboard events (left arrow will do forward for 5s, right arrow the same)
 * fetch video infos and related videos
+* autoplay next track
 ```
 and many yet to come.
 Let's improve it by contribution.

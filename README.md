@@ -11,11 +11,11 @@
 ![](screenshots/playlist.png)
 
 
-# history
+# History
 ![](screenshots/history.png)
 
 
-# search
+# Search
 ![](screenshots/search.png)
 
 This is the front-end of the project, based on Vuejs, Vuetify.

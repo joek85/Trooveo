@@ -23,7 +23,7 @@ It is connected to a [back-end server](https://github.com/joek85/YouMusic/tree/m
 Download is implemented but disabled, you can hover on the top left image in the player page to see the download button.
 It looks similar to Youtube web page but for audio.
 
-##Features
+## Features
 ```
 * Search
 * fetch channel videos and playlists

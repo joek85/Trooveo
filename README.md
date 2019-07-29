@@ -1,21 +1,21 @@
 # Trooveo is a project which can let you search, listen to youtube videos.
-# Player:
+# Player
 ![](screenshots/player.png)
 
 
-#Channel:
+# Channel
 ![](screenshots/channel.png)
 
 
-#playlist:
+# Playlist
 ![](screenshots/playlist.png)
 
 
-#history:
+# history
 ![](screenshots/history.png)
 
 
-#search:
+# search
 ![](screenshots/search.png)
 
 This is the front-end of the project, based on Vuejs, Vuetify.

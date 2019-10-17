@@ -1,5 +1,4 @@
 <template>
-  <v-layout xl2>
     <v-card class="elevation-0">
             <div class="text-xs-right">
                 <!--<v-flex xs12 >-->
@@ -29,7 +28,6 @@
           <!--<v-btn v-if="getRelatedDatas.length != '0'" @click="loadmore" round flat color="primary" dark>{{loadtext}}</v-btn>-->
         </v-flex>
     </v-card>
-  </v-layout>
 </template>
 
 <script>

@@ -98,7 +98,7 @@ export default {
               id: relates[x].id !== undefined ? relates[x].id : relates[x].video_id,
               title: relates[x].title !== undefined ? relates[x].title : relates[x].playlist_title,
               subtitle: relates[x].author,
-              imgurl: relates[x].iurlhq !== undefined ? relates[x].iurlhq.split('?')[0] : relates[x].playlist_iurlhq.split('?')[0],
+              imgurl: relates[x].author_thumbnail.split('?')[0],
               duration: playerservice.convertTime(relates[x].length_seconds),
               playcounts: relates[x].short_view_count_text})
           }

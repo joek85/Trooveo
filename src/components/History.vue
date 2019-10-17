@@ -135,7 +135,7 @@ export default {
         carbs: 0,
         protein: 0
       },
-        rowsPerPageItems: [4, 8, 12],
+        rowsPerPageItems: [8, 12, 24, 48],
         pagination: {
             rowsPerPage: 12
         },

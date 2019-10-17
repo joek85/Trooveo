@@ -66,14 +66,14 @@ export default {
     //window.document.title = 'Search'
     this.sQuery = this.$route.query.q
     this.dosearch(this.sQuery)
-    this.track()
+//    this.track()
   },
   watch: {
     '$route.query.q': function (searchquery) {
       this.sQuery = searchquery
       this.nextToken = ''
       this.dosearch(this.sQuery)
-      this.track()
+//      this.track()
     }
   },
   methods: {
@@ -86,7 +86,7 @@ export default {
         let t = this
         search.search(str)
           .then(function (response) {
-//             console.log(response.data[1])
+             console.log(response)
             let posts = []
             for (let i = 0; i < response.data[1].data.length; i++) {
 //               console.log(response.data[i])
@@ -118,6 +118,7 @@ export default {
     loadmore () {
       this.loadtext = 'loading...'
       let t = this
+        console.log(t.nextToken)
       search.search(this.sQuery, t.nextToken)
         .then(function (response) {
           for (let i = 0; i < response.data[1].data.length; i++) {

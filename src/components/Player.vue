@@ -133,7 +133,7 @@ export default {
   },
   methods: {
     track () {
-      this.$ga.page('player')
+      //this.$ga.page('player')
     },
     fetchmediadata (id, user) {
       let t = this

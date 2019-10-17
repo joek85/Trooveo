@@ -77,7 +77,7 @@
 <script>
 import vueSlider from 'vue-slider-component'
 // import VList from 'vuetify/src/components/VList/VList'
-// import webAudioPeakMeter from '@/services/AudioPeakMeter/index'
+import webAudioPeakMeter from '@/services/AudioPeakMeter/index'
 import audioengine from '@/services/AudioEngine'
 export default {
     /* eslint-disable */
@@ -233,30 +233,30 @@ export default {
       this.audios.audioB[0].autoplay = true
       this.audios.audioB[0].preload = true
       this.audios.audioB[0].crossDomain = true
-      // this.audios.audioB[0].crossOrigin = '*'
+//       this.audios.audioB[0].crossOrigin = 'anonymous'
       this.audios.audioB[1] = new Audio()
       this.audios.audioB[1].autoplay = true
       this.audios.audioB[1].preload = true
       this.audios.audioB[1].crossDomain = true
-      // this.audios.audioB[1].crossOrigin = '*'
+//       this.audios.audioB[1].crossOrigin = 'anonymous'
       // this.audios.audioA.crossOrigin = '*'
-      //      this.audios.audioA.crossDomain = true
-      //      window.AudioContext = window.AudioContext || window.webkitAudioContext
-      //      const context = new AudioContext()
-      //      const gainNode = context.createGain()
-      //      gainNode.connect(context.destination)
-      //      gainNode.gain.value = 1.0
-      //      const source = context.createMediaElementSource(this.audios.audioA)
-      //      source.connect(gainNode)
-      //
-      //      let myMeterElement = this.$refs.mypeakmeter
-      //      let myAudio = this.audios.audioA
-      //      let audioCtx = new (window.AudioContext || window.webkitAudioContext)()
-      //      //      audioCtx.sampleSize = 44100
-      //      let sourceNode = audioCtx.createMediaElementSource(myAudio)
-      //      sourceNode.connect(audioCtx.destination)
-      //      let meterNode = webAudioPeakMeter.createMeterNode(sourceNode, audioCtx)
-      //      webAudioPeakMeter.createMeter(myMeterElement, meterNode, {})
+//            this.audios.audioA.crossDomain = true
+            window.AudioContext = window.AudioContext || window.webkitAudioContext
+//            const context = new AudioContext()
+//            const gainNode = context.createGain()
+//            gainNode.connect(context.destination)
+//            gainNode.gain.value = 1.0
+//            const source = context.createMediaElementSource(this.audios.audioB[this.audios.activeAudio])
+//            source.connect(gainNode)
+
+//            let myMeterElement = this.$refs.mypeakmeter
+//            let myAudio = this.audios.audioB[this.audios.activeAudio]
+//            let audioCtx = new (window.AudioContext || window.webkitAudioContext)()
+//            //      audioCtx.sampleSize = 44100
+//            let sourceNode = audioCtx.createMediaElementSource(myAudio)
+//            sourceNode.connect(audioCtx.destination)
+//            let meterNode = webAudioPeakMeter.createMeterNode(sourceNode, audioCtx)
+//            webAudioPeakMeter.createMeter(myMeterElement, meterNode, {})
     },
     setupAudioEventListinners (index) {
       this.audios.audioB[index].addEventListener('error', this.onAudioError)
@@ -331,7 +331,7 @@ export default {
       // console.log('playing')
       this.btns[0].btnPlay = 'pause'
       this.crossFadeIn()
-      // webAudioPeakMeter.Start()
+//       webAudioPeakMeter.Start()
       //      this.audios.activeAudio++
       //      console.log(this.audios.activeAudio)
       //      this.removeAudioEventListinners(this.audios.activeAudio)

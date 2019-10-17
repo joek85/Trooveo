@@ -3,7 +3,7 @@
       <!--<v-container fluid grid-list-md>-->
         <v-layout row wrap>
           <v-flex xs12 sm12 md4 lg3 xl3>
-            <v-card color="accent" class="pa-1">
+            <v-card color="accent" class="pa-1 elevation-10">
               <!--<v-container fluid grid-list-xs class="cardpizza">-->
                 <!--<v-card-media class="v-card-media"-->
                               <!--height="300px"-->

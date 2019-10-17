@@ -28,18 +28,6 @@ Vue.config.productionTip = false
 Vue.directive('linkified', linkify)
 Vue.prototype.$bus = new Vue({})
 /* eslint-disable no-new */
-// let config = {
-//   apiKey: 'AIzaSyDZ8RoDGIMRax0delchRsZv_qqUyoJe_Qw',
-//   authDomain: 'musiclab-999a9.firebaseapp.com',
-//   databaseURL: 'https://musiclab-999a9.firebaseio.com',
-//   projectId: 'musiclab-999a9',
-//   storageBucket: 'musiclab-999a9.appspot.com',
-//   messagingSenderId: '260010306034'
-// }
-// firebase.initializeApp(config)
-Vue.use(VueAnalytics, {
-  id: 'UA-68443237-3'
-})
 Vue.use(Meta)
 new Vue({
   el: '#app',

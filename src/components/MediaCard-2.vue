@@ -37,7 +37,7 @@
               <span>{{playCounts}}</span>
             </v-chip>
             <v-chip v-if="timeM" small disabled outline color="accent">{{timeM}}</v-chip>
-
+            <v-chip v-if="published" small disabled outline color="accent">{{published}}</v-chip>
 
             </v-flex>
         </v-layout>
@@ -52,7 +52,7 @@ export default {
   components: {
 //    VCardTitle
   },
-  props: ['url', 'dur', 'playCounts', 'title', 'subtitle', 'imgurl', 'timeM'],
+  props: ['url', 'dur', 'playCounts', 'title', 'subtitle', 'imgurl', 'timeM', 'published'],
   data () {
     return {
       played: 0,

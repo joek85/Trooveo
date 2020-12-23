@@ -31,7 +31,7 @@
   </v-layout>
 </template>
 <script>
-import VCardTitle from 'vuetify/src/components/VCard/VCardTitle'
+import VCardTitle from 'vuetify/lib/components/VCard/VCardTitle'
 export default {
   components: {VCardTitle},
   //  props: ['imgUrl', 'title', 'subtitle', 'url', 'dur', 'playCounts', 'timeM'],

@@ -1,15 +1,9 @@
 /* eslint-disable */
 import Api from '@/services/Api'
 import moment from 'moment'
-import yt from 'ytdl-core'
+
 let videourl = 'https://www.youtube.com/watch?v=';
 export default {
-  getinfos (id) {
-      yt.getInfo(videourl + id, function getInfo(err, info) {
-        console.log(err);
-          console.log(info)
-      })
-  },
   fetchPlayerdata (id, user, d) {
       if (user !== null && user !== undefined) {
           return Api.hi().get('/player?id=' + id + '&user=' + user + '&d=' + d)
@@ -70,7 +64,12 @@ export default {
   },
   getTimeNow () {
     return timenow()
-  }
+  },
+    getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 }
 function getCORS (url, success) {
   let xhr = new XMLHttpRequest()

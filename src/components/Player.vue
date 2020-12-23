@@ -58,8 +58,8 @@
 </template>
 <script>
 
-import VCardMedia from 'vuetify/src/components/VCard/VCardMedia'
-import VCardTitle from 'vuetify/src/components/VCard/VCardTitle'
+import VCardMedia from 'vuetify/lib/components/VCard/VCardMedia'
+import VCardTitle from 'vuetify/lib/components/VCard/VCardTitle'
 import playerheader from '@/components/PlayerHeader.vue'
 import playerinfocard from '@/components/PlayerInfoCard.vue'
 import playerrelatedcard from '@/components/PlayerrelatedCard.vue'

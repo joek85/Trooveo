@@ -125,7 +125,7 @@
 import mediacard1 from '@/components/MediaCard-1.vue'
 import playerheader from '@/components/PlayerHeader.vue'
 import audioplayer from '@/components/AudioPlayer.vue'
-import VCardTitle from 'vuetify/src/components/VCard/VCardTitle'
+import VCardTitle from 'vuetify/lib/components/VCard/VCardTitle'
 import search from '@/services/search'
 export default {
     /* eslint-disable */

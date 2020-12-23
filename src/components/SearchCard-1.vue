@@ -40,7 +40,7 @@
   </v-layout>
 </template>
 <script>
-import VCardTitle from 'vuetify/src/components/VCard/VCardTitle'
+import VCardTitle from 'vuetify/lib/components/VCard/VCardTitle'
 // import playerservice from '@/services/player'
 export default {
   components: {VCardTitle},

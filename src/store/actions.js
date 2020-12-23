@@ -66,7 +66,7 @@ export default {
     commit('setId', id)
     playerservice.fetchPlayerdata(id,getters.getUser,playerservice.formatTime2())
       .then(function (response) {
-        // console.log(response)
+        console.log(response)
         let playerarray = []
         let chipsArray = []
         let infosArray = []
@@ -97,10 +97,11 @@ export default {
             relatedArray.push({
               id: relates[x].id !== undefined ? relates[x].id : relates[x].video_id,
               title: relates[x].title !== undefined ? relates[x].title : relates[x].playlist_title,
-              subtitle: relates[x].author,
-              imgurl: relates[x].author_thumbnail.split('?')[0],
+              subtitle: relates[x].author.name,
+              imgurl: relates[x].thumbnails[0].url.split('?')[0],
               duration: playerservice.convertTime(relates[x].length_seconds),
-              playcounts: relates[x].short_view_count_text})
+              playcounts: relates[x].short_view_count_text,
+            published: relates[x].published})
           }
         }
         commit('setHeaderData', playerarray)
@@ -133,7 +134,7 @@ export default {
   commitRelatedData ({commit, getters}) {
     playerservice.fetchRelateddata(getters.getId, getters.getRelatedData[1].nextToken)
       .then(function (response) {
-        // console.log(response)
+        console.log(response)
         let relatedarray = []
         let urls = []
         for (let i = 0; i < response.data.items.length; i++) {

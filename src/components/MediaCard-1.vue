@@ -70,7 +70,7 @@
 </template>
 <script>
     /* eslint-disable no-console */
-import VCardTitle from 'vuetify/src/components/VCard/VCardTitle'
+import VCardTitle from 'vuetify/lib/components/VCard/VCardTitle'
 // import playerservice from '@/services/player'
 export default {
   components: {

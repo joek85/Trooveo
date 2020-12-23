@@ -14,7 +14,7 @@
               </v-flex>
               <v-flex xs12 sm9 md10 lg10 xl11>
                 <h6 class="display-1">{{channelTitle}}</h6>
-                <span class="subheading">{{channelDesc}}</span>
+                <h6 class="subheading">{{channelDesc}}</h6>
               </v-flex>
             </v-layout>
         </v-card>
@@ -89,7 +89,7 @@
 import mediacard1 from '@/components/MediaCard-1.vue'
 import channelservice from '@/services/channel'
 import playlistcard from '@/components/PlaylistCard.vue'
-import VCardTitle from 'vuetify/src/components/VCard/VCardTitle'
+import VCardTitle from 'vuetify/lib/components/VCard/VCardTitle'
 import playerservice from '@/services/player'
 export default {
   components: {

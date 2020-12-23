@@ -72,6 +72,7 @@ export default {
     '$route.query.q': function (searchquery) {
       this.sQuery = searchquery
       this.nextToken = ''
+        this.results = []
       this.dosearch(this.sQuery)
 //      this.track()
     }
@@ -88,17 +89,17 @@ export default {
           .then(function (response) {
              console.log(response)
             let posts = []
-            for (let i = 0; i < response.data[1].data.length; i++) {
-//               console.log(response.data[i])
+            for (let i = 0; i < response.data[0].data.length; i++) {
+               console.log(response.data[i])
               posts.push({
-                url: response.data[1].data[i].id.videoId,
-                title: response.data[1].data[i].title,
-                subtitle: response.data[1].data[i].subtitle,
-                dur: response.data[1].data[i].duration,
-                playCounts: playerservice.formatNumbers(response.data[1].data[i].play_counts),
-                timeM: response.data[1].data[i].published_at,
-                imgurl: response.data[1].data[i].thumbnail,
-                  channel_id:response.data[1].data[i].channel_id
+                url: response.data[0].data[i].id.videoId,
+                title: response.data[0].data[i].title,
+                subtitle: response.data[0].data[i].subtitle,
+                dur: response.data[0].data[i].duration,
+                playCounts: playerservice.formatNumbers(response.data[0].data[i].play_counts),
+                timeM: response.data[0].data[i].published_at,
+                imgurl: response.data[0].data[i].thumbnail[0].url.split('?')[0],
+                  channel_id:response.data[0].data[i].channel_id
 //                channel_id:response.data[1].data[i].channel_id.split('channel/')[1] !== undefined ? response.data[1].data[i].channel_id.split('channel/')[1] : response.data[1].data[i].channel_id.split('user/')[1]
               })
             }

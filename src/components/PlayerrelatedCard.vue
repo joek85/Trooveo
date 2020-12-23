@@ -1,11 +1,12 @@
 <template>
     <v-card class="elevation-0">
             <div class="text-xs-right">
-                <!--<v-flex xs12 >-->
-                <!--<v-layout row wrap>-->
+                <v-flex xs12 >
+                <v-layout row wrap>
                 <v-switch :input-value="getswitchvalue" :label="'AutoPlay'" @change="switchvalue"></v-switch>
-                <!--</v-layout>-->
-                <!--</v-flex>-->
+                <v-checkbox v-if="getswitchvalue" label="Random" v-model="check"></v-checkbox>
+                </v-layout>
+                </v-flex>
                 <!--<v-progress-circular indeterminate :size="50" color="primary"></v-progress-circular>-->
             </div>
 
@@ -20,6 +21,7 @@
               :subtitle="related.subtitle"
               :dur="related.duration"
               :playCounts="related.playcounts"
+              :published="related.published"
             ></mediacard2>
           </v-flex>
         </v-layout>
@@ -32,7 +34,8 @@
 
 <script>
 import mediacard2 from '@/components/MediaCard-2.vue'
-import VCardTitle from 'vuetify/src/components/VCard/VCardTitle'
+import VCardTitle from 'vuetify/lib/components/VCard/VCardTitle'
+import playerserv from '@/services/player'
 export default {
     /* eslint-disable */
   components: {
@@ -49,7 +52,7 @@ export default {
     mounted () {
         this.$root.$on('autoplay', (param) => {
             //console.log(this.getRelatedDatas[0].id),
-            this.$router.push({name: 'Player', params: { id: this.getRelatedDatas[0].id }})
+            this.$router.push({name: 'Player', params: { id: this.getRelatedDatas[this.check = true ? playerserv.getRandomInt(0,this.getRelatedDatas.length) : 0].id }})
         })
     },
   computed: {

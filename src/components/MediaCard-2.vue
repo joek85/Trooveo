@@ -31,13 +31,14 @@
               <!--<router-link tag="a" class="subheading grey&#45;&#45;text" :to="{name: 'Channel', params: {id: urlchannel } }">{{ subtitle }}</router-link>-->
             </div>
 
-            <v-chip v-if="dur" small disabled outline color="accent">{{dur}}</v-chip>
+            <v-chip v-if="getLive == false" small disabled outline color="accent">{{dur}}</v-chip>
+            <v-chip v-if="getLive == true" small disabled outline color="red">LIVE</v-chip>
             <v-chip v-if="playCounts" small disabled outline color="accent">
               <v-icon>play_arrow</v-icon>
               <span>{{playCounts}}</span>
             </v-chip>
-            <v-chip v-if="timeM" small disabled outline color="accent">{{timeM}}</v-chip>
-            <v-chip v-if="published" small disabled outline color="accent">{{published}}</v-chip>
+            <!--<v-chip v-if="getLive == false" small disabled outline color="accent">{{timeM}}</v-chip>-->
+            <v-chip v-if="getLive == false" small disabled outline color="accent">{{published}}</v-chip>
 
             </v-flex>
         </v-layout>
@@ -52,7 +53,7 @@ export default {
   components: {
 //    VCardTitle
   },
-  props: ['url', 'dur', 'playCounts', 'title', 'subtitle', 'imgurl', 'timeM', 'published'],
+  props: ['url', 'dur', 'playCounts', 'title', 'subtitle', 'imgurl', 'timeM', 'published', 'isLive'],
   data () {
     return {
       played: 0,
@@ -126,6 +127,9 @@ export default {
       cPicture: function() {
           return this.failed_image ? this.imgurl : this.imgurl.split('hqdefault')[0] + 'maxresdefault.jpg';
       },
+      getLive(){
+          return this.isLive
+      }
   }
 }
 </script>

@@ -24,6 +24,7 @@
             :playCounts="card.playCounts"
             :timeM="card.timeM"
             :channel_id="card.channel_id"
+            :isLive="card.isLive"
           ></searchcard1>
         </v-flex>
       </v-layout>
@@ -99,6 +100,7 @@ export default {
                 playCounts: playerservice.formatNumbers(response.data[0].data[i].play_counts),
                 timeM: response.data[0].data[i].published_at,
                 imgurl: response.data[0].data[i].thumbnail[0].url.split('?')[0],
+                  isLive: response.data[0].data[i].isLive,
                   channel_id:response.data[0].data[i].channel_id
 //                channel_id:response.data[1].data[i].channel_id.split('channel/')[1] !== undefined ? response.data[1].data[i].channel_id.split('channel/')[1] : response.data[1].data[i].channel_id.split('user/')[1]
               })

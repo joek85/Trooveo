@@ -15,6 +15,9 @@
               <v-flex xs12 sm9 md10 lg10 xl11>
                 <h6 class="display-1">{{channelTitle}}</h6>
                 <h6 class="subheading">{{channelDesc}}</h6>
+                <v-divider class="my-1"></v-divider>
+                <h6 class="subheading">{{subscriberText}}</h6>
+
               </v-flex>
             </v-layout>
         </v-card>
@@ -109,6 +112,7 @@ export default {
       channelImgUrl: '',
       channelTitle: '',
       channelDesc: '',
+        subscriberText: '',
       PlaylistsTitle: '',
       playlistDesc: '',
       playlistImgUrl: '',
@@ -134,9 +138,10 @@ export default {
         .then(function (response) {
           console.log(response);
           t.dataready = true;
-          t.channelImgUrl = response.data.info.avatarURL;
-          t.channelTitle = response.data.info.title;
-          t.channelDesc = response.data.info.description;
+          t.channelImgUrl = response.data.authorThumbnails[2].url;
+          t.channelTitle = response.data.author;
+          t.channelDesc = response.data.description;
+          t.subscriberText = response.data.subscriberText;
           t.videos = response.data.info.videos;
           t.playlists = response.data.info.playlists;
           t.setWindowTitle(t.channelTitle)

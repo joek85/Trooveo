@@ -28,12 +28,13 @@
         <router-link tag="a" class="subheading grey--text" :to="{name: 'Channel', params: {id: channel_id } }">{{ subtitle }}</router-link>
       </div>
         <v-card-actions>
-          <v-chip small disabled outline color="accent">{{dur}}</v-chip>
+          <v-chip v-if="getLive == false" small disabled outline color="accent">{{dur}}</v-chip>
+          <v-chip v-if="getLive == true" small disabled outline color="red">LIVE</v-chip>
           <v-chip small disabled outline color="accent">
             <v-icon>play_arrow</v-icon>
             <span>{{playCounts}}</span>
           </v-chip>
-          <v-chip small disabled outline color="accent">{{timeM}}</v-chip>
+          <v-chip v-if="getLive == false" small disabled outline color="accent">{{timeM}}</v-chip>
         </v-card-actions>
       <!--</v-card>-->
     </v-flex>
@@ -44,7 +45,7 @@ import VCardTitle from 'vuetify/lib/components/VCard/VCardTitle'
 // import playerservice from '@/services/player'
 export default {
   components: {VCardTitle},
-  props: ['url', 'imgurl', 'dur', 'title', 'subtitle', 'playCounts', 'timeM', 'channel_id'],
+  props: ['url', 'imgurl', 'dur', 'title', 'subtitle', 'playCounts', 'timeM', 'channel_id', 'isLive'],
   data () {
     return {
     }
@@ -76,7 +77,12 @@ export default {
     //          console.log(error)
     //        })
     }
-  }
+  },
+    computed: {
+      getLive(){
+          return this.isLive
+      }
+    }
 }
 </script>
 <style scoped>

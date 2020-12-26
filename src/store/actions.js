@@ -80,6 +80,7 @@ export default {
             playcounts: playerservice.formatNumbers(response.data[i].play_counts),
             timeM: playerservice.formatTime(response.data[i].published_at),
             Id: id,
+              isLive: response.data[i].isLive,
               channel_id:response.data[i].channel_id});
           infosArray.push({
             title: response.data[i].subtitle, descriptions: response.data[i].description
@@ -101,6 +102,7 @@ export default {
               imgurl: relates[x].thumbnails[0].url.split('?')[0],
               duration: playerservice.convertTime(relates[x].length_seconds),
               playcounts: relates[x].short_view_count_text,
+                isLive: relates[x].isLive,
             published: relates[x].published})
           }
         }

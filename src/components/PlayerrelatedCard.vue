@@ -22,6 +22,7 @@
               :dur="related.duration"
               :playCounts="related.playcounts"
               :published="related.published"
+              :isLive="related.isLive"
             ></mediacard2>
           </v-flex>
         </v-layout>

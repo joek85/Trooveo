@@ -77,12 +77,13 @@
             <h6 class="display-1">{{ getHdata[0].title }}</h6>
             <router-link style="color: white" tag="a" class="subheading pr-1" :to="{name: 'Channel', params: {id: getHdata[0].channel_id}, meta: {title: getHdata[0].title} }"> {{ getHdata[0].subtitle }}</router-link>
             <!--<span class="subheading">{{ getHdata[0].subtitle }}</span>-->
-            <v-chip v-if="getHdata[0].duration" small disabled outline color="accent">{{getHdata[0].duration}}</v-chip>
+            <v-chip v-if="getHdata[0].isLive == false" small disabled outline color="accent">{{getHdata[0].duration}}</v-chip>
+            <v-chip v-if="getHdata[0].isLive == true" small disabled outline color="red">LIVE</v-chip>
             <v-chip v-if="getHdata[0].playcounts" small disabled outline color="accent">
               <v-icon>play_arrow</v-icon>
               <span>{{getHdata[0].playcounts}}</span>
             </v-chip>
-            <v-chip v-if="getHdata[0].timeM" small disabled outline color="accent">{{getHdata[0].timeM}}</v-chip>
+            <v-chip v-if="getHdata[0].isLive == false" small disabled outline color="accent">{{getHdata[0].timeM}}</v-chip>
             <v-divider class="my-2"></v-divider>
             <v-chip v-for="chip in getHdata[1].chips"
                     :key="chip.length"
@@ -125,7 +126,10 @@ export default {
   computed: {
     getHdata () {
       return this.$store.getters.getheaderdata
-    }
+    },
+      getLive(){
+          return !!this.getHdata[0].isLive
+      }
   }
 }
 </script>

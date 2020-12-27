@@ -1,18 +1,14 @@
 <template>
   <v-content>
-    <v-container >
-      <v-layout row wrap>
-        <v-flex xs12>
-          <playerheader></playerheader>
+    <v-container grid-list-sm>
+      <v-layout row >
+        <v-flex xs4 order-lg4>
+          <playerrelatedcard></playerrelatedcard>
         </v-flex>
-        <v-layout row wrap >
-          <v-flex xs12 sm12 md6 lg6 xl8>
-            <playerinfocard></playerinfocard>
-          </v-flex>
-          <v-flex xs12 sm12 md6 lg6 xl4>
-            <playerrelatedcard></playerrelatedcard>
-          </v-flex>
-        </v-layout>
+        <v-flex xs8 >
+          <playerheader></playerheader>
+          <playerinfocard></playerinfocard>
+        </v-flex>
         <v-dialog v-model="setsDialog" maxWidth="400">
           <v-card>
             <v-card-title class="headline">Add to...</v-card-title>
@@ -53,7 +49,6 @@
         </v-dialog>
       </v-layout>
     </v-container>
-
   </v-content>
 </template>
 <script>

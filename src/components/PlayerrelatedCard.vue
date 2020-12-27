@@ -1,14 +1,14 @@
 <template>
     <v-card class="elevation-0">
-            <div class="text-xs-right">
-                <v-flex xs12 >
-                <v-layout row wrap>
-                <v-switch :input-value="getswitchvalue" :label="'AutoPlay'" @change="switchvalue"></v-switch>
-                <v-checkbox v-if="getswitchvalue" label="Random" v-model="check"></v-checkbox>
-                </v-layout>
-                </v-flex>
-                <!--<v-progress-circular indeterminate :size="50" color="primary"></v-progress-circular>-->
-            </div>
+            <!--<div class="text-xs-right">-->
+                <!--<v-flex xs12 >-->
+                <!--<v-layout row wrap>-->
+                <!--<v-switch :input-value="getswitchvalue" :label="'AutoPlay'" @change="switchvalue"></v-switch>-->
+                <!--<v-checkbox v-if="getswitchvalue" label="Random" v-model="check"></v-checkbox>-->
+                <!--</v-layout>-->
+                <!--</v-flex>-->
+                <!--&lt;!&ndash;<v-progress-circular indeterminate :size="50" color="primary"></v-progress-circular>&ndash;&gt;-->
+            <!--</div>-->
 
         <v-layout row wrap>
           <v-flex xs12

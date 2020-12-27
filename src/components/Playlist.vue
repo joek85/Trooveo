@@ -8,14 +8,14 @@
                         <v-layout row wrap align-center class=""> <!--align-center class="justify-center"-->
                             <v-flex xs1 sm3 md4 lg3 xl2 class="pa-2">
                                 <v-avatar
-                                        :size="128"
-                                        class="accent">
+                                        :size="96"
+                                        class="">
                                     <v-img :src="channelImgUrl"></v-img>
                                 </v-avatar>
                                 <!--</v-container>-->
                             </v-flex>
                             <v-flex xs12 sm9 md8 lg9 xl10>
-                                <h6 class="display-1">{{channelTitle}}</h6>
+                                <h3 class="display-1">{{channelTitle}}</h3>
                             </v-flex>
                         </v-layout>
                         <v-card-title class="display-1">{{Title}}</v-card-title>
@@ -35,11 +35,12 @@
                                 v-for="item in items"
                                 :key="item.length">
                             <mediacard2
-                                    :imgurl="item.thumbnail"
+                                    :imgurl="item.bestThumbnail.url"
                                     :url="item.id"
                                     :title="item.title"
                                     :subtitle="item.author.name"
                                     :dur="item.duration"
+                                    :isLive="item.isLive"
                             ></mediacard2>
                         </v-flex>
                     </v-card>
@@ -75,7 +76,7 @@ export default {
                 .then(function (response) {
                     console.log(response)
                     t.dataready = true;
-                    t.channelImgUrl = response.data.author.avatar;
+                    t.channelImgUrl = response.data.author.bestAvatar.url;
                     t.channelTitle = response.data.author.name
                     t.Title = response.data.title
                     t.total = response.data.total_items

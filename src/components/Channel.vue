@@ -2,22 +2,28 @@
   <v-content>
     <v-progress-linear v-if="!getdataReady" :indeterminate="true"></v-progress-linear>
     <v-container v-if="getdataReady">
+      <v-flex xs12>
+        <v-card flat>
+          <v-img
+                  :src="authorBanners"
+                  max-height="256"
+                  class="grey darken-4"
+          ></v-img>
+        </v-card>
+      </v-flex>
         <v-card flat color="white" light height="auto">
-            <v-layout row wrap align-center class=""> <!--align-center class="justify-center"-->
-              <v-flex xs1 sm3 md2 lg2 xl1 class="pa-2">
-                  <v-avatar
-                    :size="128"
-                    class="accent">
-                    <v-img :src="channelImgUrl"></v-img>
-                  </v-avatar>
-                <!--</v-container>-->
-              </v-flex>
+            <v-layout row wrap align-center class="justify-center align-content-xl-center"> <!--align-center class="justify-center"-->
+              <v-avatar
+                      :size="96"
+                      class="pr-4">
+                <v-img :src="channelImgUrl"></v-img>
+              </v-avatar>
               <v-flex xs12 sm9 md10 lg10 xl11>
-                <h6 class="display-1">{{channelTitle}}</h6>
-                <h6 class="subheading">{{channelDesc}}</h6>
-                <v-divider class="my-1"></v-divider>
+                <h3 class="display-1">{{channelTitle}}</h3>
                 <h6 class="subheading">{{subscriberText}}</h6>
+                <v-divider class="my-1"></v-divider>
 
+                <h6 class="subheading">{{channelDesc}}</h6>
               </v-flex>
             </v-layout>
         </v-card>
@@ -49,7 +55,7 @@
                             :imgurl="props.item.thumbnail"
                             :url="props.item.id"
                             :title="props.item.title"
-                            :timeM="getTime(props.item.dateCreated)"
+                            :timeM="props.item.dateCreated"
                             :playCounts="props.item.viewCount"
                             :dur="props.item.duration"
                     ></mediacard1>
@@ -106,7 +112,7 @@ export default {
         model: 'tab-1',
         rowsPerPageItems: [4, 8, 12, 24],
         pagination: {
-            rowsPerPage: 12
+            rowsPerPage: 24
         },
         dataready:false,
       channelImgUrl: '',
@@ -117,24 +123,27 @@ export default {
       playlistDesc: '',
       playlistImgUrl: '',
       playlistitemscount: '',
+        authorBanners:'',
       playlists: [],
         videos: []
     }
   },
   mounted () {
-    this.getChannelDatas(this.$route.params.id)
-    // this.getChannelsectionDatas(this.$route.params.id)
+    this.getChannelInfo(this.$route.params.id);
+    this.getChannelVideos(this.$route.params.id);
+      this.getChannelPlaylists(this.$route.params.id)
   },
   watch: {
     '$route': function (pizza) {
-      this.getChannelDatas(pizza.params.id)
-      //this.getChannelsectionDatas(pizza.params.id)
+      this.getChannelInfo(pizza.params.id);
+      this.getChannelVideos(pizza.params.id);
+        this.getChannelPlaylists(this.$route.params.id)
     }
   },
   methods: {
-    getChannelDatas (channel) {
-      let t = this
-      channelservice.fetchChannelData(channel)
+      getChannelInfo (channel) {
+      let t = this;
+      channelservice.fetchChannelInfo(channel)
         .then(function (response) {
           console.log(response);
           t.dataready = true;
@@ -142,26 +151,51 @@ export default {
           t.channelTitle = response.data.author;
           t.channelDesc = response.data.description;
           t.subscriberText = response.data.subscriberText;
-          t.videos = response.data.info.videos;
-          t.playlists = response.data.info.playlists;
+          t.authorBanners = response.data.authorBanners[5].url;
           t.setWindowTitle(t.channelTitle)
         })
         .catch(function (error) {
           console.log(error)
         })
     },
-    getChannelsectionDatas (channel) {
-      let t = this
-      channelservice.fetchChannelSectionData(channel)
+    getChannelVideos (channel) {
+      let t = this;
+      channelservice.fetchChannelVideos(channel, 'newest')
         .then(function (response) {
-          // console.log(response.data.items[3].contentDetails.playlists[0])
-          // console.log(response)
-          t.playlists.push(response.data.items[3].contentDetails.playlists[0])
+//          console.log(response);
+            for (let x = 0; x < response.data.items.length; x++) {
+                t.videos.push({
+                    id: response.data.items[x].videoId,
+                    title: response.data.items[x].title,
+                    thumbnail: response.data.items[x].videoThumbnails[3].url,
+                    dateCreated: response.data.items[x].publishedText,
+                    viewCount: response.data.items[x].viewCount,
+                    duration: response.data.items[x].durationText
+                })
+            }
         })
         .catch(function (error) {
           console.log(error)
         })
     },
+      getChannelPlaylists (channel) {
+          let t = this;
+          channelservice.fetchChannelPlaylists(channel, 'newest')
+              .then(function (response) {
+                  console.log(response);
+                  for (let x = 0; x < response.data.items.length; x++) {
+                      t.playlists.push({
+                          id: response.data.items[x].playlistId,
+                          title: response.data.items[x].title,
+                          thumbnail: response.data.items[x].playlistThumbnail,
+                          videosCount: response.data.items[x].videoCount,
+                      })
+                  }
+              })
+              .catch(function (error) {
+                  console.log(error)
+              })
+      },
       getTime (t) {
           return playerservice.formatTime(t)
       },

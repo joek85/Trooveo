@@ -20,7 +20,7 @@
 
             <!--</v-card>-->
           </v-flex>
-          <v-flex xs12 sm8 md8 lg8>
+          <v-flex xs12 sm8 md8 lg8 class="px-0">
 
             <div>
               <router-link tag="a" class="subheading" :to="{name: 'Player', params: {id: url}, meta: {title: title} }"> {{ title }}</router-link>

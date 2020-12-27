@@ -1,10 +1,13 @@
 import Api from '@/services/Api'
 
 export default {
-  fetchChannelData (channelId) {
+  fetchChannelInfo (channelId) {
     return Api.hi().get('/channel?channelId=' + channelId)
   },
-  fetchChannelSectionData (channelId) {
-    return Api.hi().get('/channel/channelsection?channelId=' + channelId)
-  }
+    fetchChannelVideos (channelId, sortBY) {
+    return Api.hi().get('/channel/channelvideos?channelId=' + channelId + "&sortby=" + sortBY)
+  },
+    fetchChannelPlaylists (channelId, sortBY) {
+        return Api.hi().get('/channel/channelplaylists?channelId=' + channelId + "&sortby=" + sortBY)
+    }
 }

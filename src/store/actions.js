@@ -83,7 +83,7 @@ export default {
               isLive: response.data[i].isLive,
               channel_id:response.data[i].channel_id});
           infosArray.push({
-            title: response.data[i].subtitle, descriptions: response.data[i].description
+            title: response.data[i].title, descriptions: response.data[i].description, subtitle: response.data[i].subtitle, author:response.data[i].author
           })
           if (response.data[i].tags) {
             for (let j = 0; j < response.data[i].tags.length; j++) {
@@ -109,9 +109,9 @@ export default {
         commit('setHeaderData', playerarray)
         commit('setInfosData', infosArray)
         commit('setRelatedData', relatedArray)
-        commit('setAudioPlayerUrl', response.data[0].formats.url)
-        commit('setfootervisibility', 'visible')
-        commit('setAudioPlayerId', id)
+        // commit('setAudioPlayerUrl', response.data[0].formats.url)
+        // commit('setfootervisibility', 'visible')
+        // commit('setAudioPlayerId', id)
       })
       .catch(function (error) {
         console.log(error)

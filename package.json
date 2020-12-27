@@ -18,6 +18,7 @@
     "vue-analytics": "^5.22.1",
     "vue-linkify": "^1.0.1",
     "vue-meta": "^1.6.0",
+    "vue-plyr": "^7.0.0",
     "vue-router": "^3.4.9",
     "vue-slider-component": "^2.8.16",
     "vuetify": "^1.5.24",

@@ -11,6 +11,8 @@ import linkify from 'vue-linkify'
 import { store } from './store/index'
 import VueAnalytics from 'vue-analytics'
 import Meta from 'vue-meta'
+import VuePlyr from 'vue-plyr'
+import 'vue-plyr/dist/vue-plyr.css'
 Vue.use(Vuetify, {
   theme: {
     primary: '#35495e',
@@ -27,7 +29,7 @@ Vue.use(colors)
 Vue.config.productionTip = false
 Vue.directive('linkified', linkify)
 Vue.prototype.$bus = new Vue({})
-
+Vue.use(VuePlyr)
 Vue.use(Meta)
 new Vue({
   el: '#app',
